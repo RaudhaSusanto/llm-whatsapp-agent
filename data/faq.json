@@ -1,0 +1,32 @@
+[
+  {
+    "id": "faq_001",
+    "question": ["halo", "hai", "hi", "helo"],
+    "answer": "Halo! Saya di sini untuk membantu. Mau tanya apa hari ini?"
+  },
+  {
+    "id": "faq_002",
+    "question": ["harga", "biaya", "harga layanan", "berapa"],
+    "answer": "Harga layanan kami mulai dari Rp50.000. Ingin tahu rincian paket?"
+  },
+  {
+    "id": "faq_003",
+    "question": ["lokasi", "alamat", "dimana"],
+    "answer": "Kantor kami berlokasi di Jl. Contoh No.123, Kota Contoh."
+  },
+  {
+    "id": "faq_004",
+    "question": ["jam", "operasional", "buka"],
+    "answer": "Kami buka Senin–Jumat 09:00–17:00 WIB."
+  },
+  {
+    "id": "faq_005",
+    "question": ["contact", "nomor", "telp", "whatsapp admin"],
+    "answer": "Hubungi admin: +62 812-3456-7890."
+  },
+  {
+    "id": "faq_006",
+    "question": ["help", "bantuan", "cara pakai", "menu"],
+    "answer": "Ketik pertanyaanmu atau pilih menu: 1) Harga 2) Lokasi 3) Jam operasional"
+  }
+]
