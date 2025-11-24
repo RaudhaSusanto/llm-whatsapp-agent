@@ -1,6 +1,7 @@
 LLM WhatsApp Agent — Baileys + OpenAI
 
 Proyek ini membangun LLM Agent yang terintegrasi dengan WhatsApp menggunakan Baileys sebagai konektor dan OpenAI API sebagai model bahasa.
+
 Agent mampu membalas pesan WhatsApp secara otomatis, memahami konteks, serta dapat dikembangkan dengan berbagai fitur tambahan.
 
 --------------------------------------------------------------------------------------------------
@@ -18,6 +19,7 @@ Agent mampu membalas pesan WhatsApp secara otomatis, memahami konteks, serta dap
 
 --------------------------------------------------------------------------------------------------
 📁 Struktur Folder
+
 llm-whatsapp-agent/
 
 │ .env
@@ -51,50 +53,74 @@ llm-whatsapp-agent/
 -------------------------------------------------------------------------------------------------
 ⚙️ Instalasi
 1️⃣ Clone Repository
+
 git clone https://github.com/RaudhaSusanto/llm-whatsapp-agent.git
+
 cd llm-whatsapp-agent
 
 2️⃣ Install Dependency
+
 npm install
 
 3️⃣ Buat file .env
+
 Salin dari .env.example:
+
 cp .env.example .env
 
 Lalu isi seperti ini:
 
 OPENAI_API_KEY=isi_api_key_kamu
+
 OPENAI_API_BASE_URL=https://api.openai.com/v1
+
 MODEL=gpt-4o-mini
 
 ▶️ Menjalankan Aplikasi (CLI)
 npm run dev
 
-Jika berhasil, terminal akan menampilkan QR untuk login WhatsApp.
-Scan QR menggunakan WhatsApp → Linked Devices.
-Bot akan aktif setelah status:
-WhatsApp Bot Connected!
+Jika berhasil, terminal akan menampilkan QR untuk login whatsapp. 
+
+Scan QR menggunakan whatsapp -> Linked Devices.
+
+Bot akan aktif setelah status : 
+
+Whatsapp bot Connected!
+
 -----------------------------------------------------------------------------------------------
 💬 Cara Menguji Bot di WhatsApp
 Cukup kirim pesan ke WhatsApp kamu yang terhubung:
+
 Contoh:
+
 User: "Halo"
+
 Bot: "Hai! Ada yang bisa aku bantu?"
 
 🧪 Testing
+
 Folder tests/ sudah disediakan.
+
 Untuk menjalankan test:
+
 npm run test
 
 📝 Contoh .env.example
+
 OPENAI_API_KEY=YOUR_API_KEY_HERE
+
 OPENAI_API_BASE_URL=https://api.openai.com/v1
+
 MODEL=gpt-4o-mini
 
 🖼 Demo
+
 Tambahkan screenshot / GIF berikut:
+
 Proses scan QR
+
 Bot merespon pesan WhatsApp
+
 Contoh:
 
 demo/
