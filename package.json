@@ -19,6 +19,7 @@
     "@whiskeysockets/baileys": "^7.0.0-rc.9",
     "axios": "^1.13.2",
     "dotenv": "^17.2.3",
+    "node-fetch": "^3.3.2",
     "openai": "^6.9.1",
     "pino": "^10.1.0",
     "qrcode-terminal": "^0.12.0"

@@ -2,25 +2,23 @@ import makeWASocket, {
   useMultiFileAuthState,
   fetchLatestBaileysVersion,
 } from "@whiskeysockets/baileys";
-
 import qrcodeTerminal from "qrcode-terminal";
 import { runAgent } from "./agent.js";
-import { loadFaq, matchIntent } from "./intent.js";
 import Pino from "pino";
 
 export async function startWhatsApp() {
+  // Auth state
   const { state, saveCreds } = await useMultiFileAuthState("./auth_info");
   const { version } = await fetchLatestBaileysVersion();
 
-  const faqList = loadFaq(); // ← LOAD FAQ SEKALI SAJA
-
+  // Buat socket
   const sock = makeWASocket({
     version,
     auth: state,
     logger: Pino({ level: "silent" }),
   });
 
-  // ---------- QR CODE ----------
+  // ---- QR CODE HANDLER ----
   sock.ev.on("connection.update", (update) => {
     const { connection, qr } = update;
 
@@ -39,20 +37,20 @@ export async function startWhatsApp() {
     }
   });
 
-  // ---------- MESSAGE HANDLER ----------
+  // ---- MESSAGE HANDLER (ANTI LOOP + CLEAN) ----
   sock.ev.on("messages.upsert", async ({ messages }) => {
     const msg = messages[0];
     if (!msg || !msg.message) return;
 
     const from = msg.key.remoteJid;
 
-    // 🛑 Anti-loop: jangan balas pesan kita sendiri
+    // 🛑 Anti Loop: Jangan proses pesan dari bot sendiri
     if (msg.key.fromMe) return;
 
-    // 🛑 Hindari pesan internal Baileys
+    // 🛑 Hindari pesan Baileys yang ID-nya "BAE5"
     if (msg.key.id && msg.key.id.startsWith("BAE5")) return;
 
-    // Ambil text
+    // Ambil teks dari berbagai jenis pesan
     const text =
       msg.message.conversation ||
       msg.message.extendedTextMessage?.text ||
@@ -63,26 +61,15 @@ export async function startWhatsApp() {
 
     console.log("📩 Pesan diterima:", text);
 
-    // ---------- Coba Match FAQ ----------
-    const matched = matchIntent(text, faqList);
-
-    if (matched) {
-      console.log("🔎 Matched FAQ:", matched.id);
-
-      await sock.sendMessage(from, {
-        text: matched.answer,
-      });
-
-      return; // STOP — jangan lanjut ke LLM
-    }
-
-    // ---------- Tidak match, panggil AI ----------
+    // Jalankan AI Agent
     const reply = await runAgent(text);
 
     console.log("🤖 Balasan AI:", reply);
 
+    // Kirim balasan
     await sock.sendMessage(from, { text: reply });
   });
 
+  // Simpan kredensial
   sock.ev.on("creds.update", saveCreds);
 }
