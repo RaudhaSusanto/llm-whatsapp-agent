@@ -19,31 +19,45 @@ Agent mampu membalas pesan WhatsApp secara otomatis, memahami konteks, serta dap
 --------------------------------------------------------------------------------------------------
 📁 Struktur Folder
 llm-whatsapp-agent/
+
 │ .env
+
 │ .env.example
+
 │ .gitignore
+
 │ package.json
+
 │ README.md
+
 │ logs/
+
 │ └── example.log
+
 │ tests/
+
 │ └── agent.test.js
+
 │ auth_info/
+
 │ src/
+
    ├── index.js
+   
    ├── agent.js
+   
    └── whatsapp.js
 
 -------------------------------------------------------------------------------------------------
 ⚙️ Instalasi
-1️⃣ **Clone Repository**
+1️⃣ Clone Repository
 git clone https://github.com/RaudhaSusanto/llm-whatsapp-agent.git
 cd llm-whatsapp-agent
 
-2️⃣ **Install Dependency**
+2️⃣ Install Dependency
 npm install
 
-3️⃣ **Buat file .env**
+3️⃣ Buat file .env
 Salin dari .env.example:
 cp .env.example .env
 
@@ -53,31 +67,31 @@ OPENAI_API_KEY=isi_api_key_kamu
 OPENAI_API_BASE_URL=https://api.openai.com/v1
 MODEL=gpt-4o-mini
 
-▶️ **Menjalankan Aplikasi (CLI)**
+▶️ Menjalankan Aplikasi (CLI)
 npm run dev
 
 Jika berhasil, terminal akan menampilkan QR untuk login WhatsApp.
 Scan QR menggunakan WhatsApp → Linked Devices.
 Bot akan aktif setelah status:
-**WhatsApp Bot Connected!**
+WhatsApp Bot Connected!
 -----------------------------------------------------------------------------------------------
-💬 **Cara Menguji Bot di WhatsApp**
+💬 Cara Menguji Bot di WhatsApp
 Cukup kirim pesan ke WhatsApp kamu yang terhubung:
 Contoh:
 User: "Halo"
 Bot: "Hai! Ada yang bisa aku bantu?"
 
-🧪 **Testing**
+🧪 Testing
 Folder tests/ sudah disediakan.
 Untuk menjalankan test:
 npm run test
 
-📝 **Contoh .env.example**
+📝 Contoh .env.example
 OPENAI_API_KEY=YOUR_API_KEY_HERE
 OPENAI_API_BASE_URL=https://api.openai.com/v1
 MODEL=gpt-4o-mini
 
-🖼 **Demo**
+🖼 Demo
 Tambahkan screenshot / GIF berikut:
 Proses scan QR
 Bot merespon pesan WhatsApp
@@ -85,15 +99,21 @@ Contoh:
 
 demo/
  ├── qr-login.png
+ 
  ├── chat-demo.png
 
 ------------------------------------------------------------------------------------------------
 📌 Teknologi
 Komponen	      Keterangan
+
 Baileys	        WhatsApp Web API unofficial
+
 OpenAI SDK	    Pemanggilan model GPT
+
 Node.js	        Runtime utama
+
 dotenv	        Load konfigurasi
+
 pino	          Logging ringan
 ------------------------------------------------------------------------------------------------
 📚 Cara Kerja Singkat
